@@ -340,8 +340,6 @@ const isValidEmail = (email) => {
     return emailRegex.test(email);
 };
 
-
-    // Ajoutez des écouteurs d'événements d'entrée pour chaque champ de formulaire
     signupForm.addEventListener('input', toggleButtons);
     signinForm.addEventListener('input', toggleButtons);
 
@@ -373,13 +371,14 @@ const isValidEmail = (email) => {
         }
     });
 
-  const redirectToVoiciMesSitesPage = (formType) => {
+ const redirectToVoiciMesSitesPage = (formType) => {
     console.log(`Redirection vers VoiciMesSites.html depuis le formulaire ${formType}`);
     if (formType === 'signup') {
         console.log('Signup form is being submitted...');
         if (signupForm.reportValidity()) {
             console.log('Signup form is valid. Redirecting...');
-            window.location.href = 'VoiciMesSites.html';
+            // Supprimez ou commentez la ligne suivante si vous ne souhaitez pas rediriger
+            window.location.href = 'messitesweb.neocities.org/VoiciMesSites';
         } else {
             console.log('Signup form is not valid. Displaying error message...');
             errorMessage.innerHTML = 'Veuillez remplir tous les champs du formulaire.';
@@ -388,7 +387,8 @@ const isValidEmail = (email) => {
         console.log('Signin form is being submitted...');
         if (signinForm.reportValidity()) {
             console.log('Signin form is valid. Redirecting...');
-            window.location.href = 'VoiciMesSites.html';
+            // Supprimez ou commentez la ligne suivante si vous ne souhaitez pas rediriger
+            window.location.href = 'messitesweb.neocities.org/VoiciMesSites';
         } else {
             console.log('Signin form is not valid. Displaying error message...');
             errorMessage.innerHTML = 'Veuillez remplir tous les champs du formulaire.';
@@ -398,7 +398,6 @@ const isValidEmail = (email) => {
         errorMessage.innerHTML = 'Erreur de traitement du formulaire.';
     }
 };
-
 const resetFormFields = (form) => {
     const inputFields = form.querySelectorAll('input');
     inputFields.forEach((input) => {
@@ -416,26 +415,7 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
     resetFormFields(signinForm);
     toggleButtons();
-});
-
- function inscription() {
-            const nom = document.getElementById('nom').value;
-            const email = document.getElementById('email').value;
-            const motDePasse = document.getElementById('motDePasse').value;
-
-            fetch('/inscription', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ nom, email, motDePasse }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-            })
-            .catch(error => console.error('Erreur :', error));
-        }
+});    }
         
 </script>
 
