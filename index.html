@@ -257,12 +257,12 @@ body{
         <div class="toggle-container">
             <div class="toggle">
                 <div class="toggle-panel toggle-left">
-                    <h1>Welcome, friend !</h1>
+                    <h1>Welcome Back!</h1>
                     <p>Enter your personal details to use all of site features</p>
                     <button class="hidden" id="login">Sign In</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Welcome back !</h1>
+                    <h1>Welcome, Friend!</h1>
                     <p>Enter your personal details to use all of site features</p>
                     <button class="hidden" id="register">Sign Up</button>
                 </div>
@@ -340,6 +340,8 @@ const isValidEmail = (email) => {
     return emailRegex.test(email);
 };
 
+
+    // Ajoutez des écouteurs d'événements d'entrée pour chaque champ de formulaire
     signupForm.addEventListener('input', toggleButtons);
     signinForm.addEventListener('input', toggleButtons);
 
@@ -371,14 +373,13 @@ const isValidEmail = (email) => {
         }
     });
 
- const redirectToVoiciMesSitesPage = (formType) => {
+  const redirectToVoiciMesSitesPage = (formType) => {
     console.log(`Redirection vers VoiciMesSites.html depuis le formulaire ${formType}`);
     if (formType === 'signup') {
         console.log('Signup form is being submitted...');
         if (signupForm.reportValidity()) {
             console.log('Signup form is valid. Redirecting...');
-            // Supprimez ou commentez la ligne suivante si vous ne souhaitez pas rediriger
-            window.location.href = 'messitesweb.neocities.org/VoiciMesSites';
+            window.location.href = 'VoiciMesSites.html';
         } else {
             console.log('Signup form is not valid. Displaying error message...');
             errorMessage.innerHTML = 'Veuillez remplir tous les champs du formulaire.';
@@ -387,8 +388,7 @@ const isValidEmail = (email) => {
         console.log('Signin form is being submitted...');
         if (signinForm.reportValidity()) {
             console.log('Signin form is valid. Redirecting...');
-            // Supprimez ou commentez la ligne suivante si vous ne souhaitez pas rediriger
-            window.location.href = 'messitesweb.neocities.org/VoiciMesSites';
+            window.location.href = 'VoiciMesSites.html';
         } else {
             console.log('Signin form is not valid. Displaying error message...');
             errorMessage.innerHTML = 'Veuillez remplir tous les champs du formulaire.';
@@ -398,6 +398,7 @@ const isValidEmail = (email) => {
         errorMessage.innerHTML = 'Erreur de traitement du formulaire.';
     }
 };
+
 const resetFormFields = (form) => {
     const inputFields = form.querySelectorAll('input');
     inputFields.forEach((input) => {
@@ -415,8 +416,8 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
     resetFormFields(signinForm);
     toggleButtons();
-});    }
-        
+});
+
 </script>
 
 </body>
